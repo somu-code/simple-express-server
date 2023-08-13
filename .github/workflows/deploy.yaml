@@ -22,4 +22,4 @@ jobs:
           chmod 600 keyfile
           mkdir -p ~/.ssh
           echo "$HOST_KEY" > ~/.ssh/known_hosts
-          ssh -ti keyfile ubuntu@13.232.196.120 "sudo source ./simple-express-server/deploy.sh"
+          ssh -ti keyfile ubuntu@13.232.196.120 "sudo bash ./simple-express-server/deploy.sh"
