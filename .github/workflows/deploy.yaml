@@ -19,4 +19,6 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" > keyfile
           chmod 600 keyfile
+          mkdir -p ~/.ssh
+          echo ${{HOST_KEY}} > ~/.ssh/known_hosts
           ssh -ti keyfile ubuntu@13.232.196.120 "sudo source ./simple-express-server/deploy.sh"
