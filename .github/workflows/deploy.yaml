@@ -16,10 +16,9 @@ jobs:
       - name: SSH and deploy
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          HOST_KEY: ${{ secrets.HOST_KEY }}
         run: |
           echo "$SSH_PRIVATE_KEY" > keyfile
           chmod 600 keyfile
           mkdir -p ~/.ssh
-          echo "$HOST_KEY" > ~/.ssh/known_hosts
+          cp known_hosts ~/.ssh/known_hosts
           ssh -ti keyfile ubuntu@13.232.196.120 "sudo bash ./simple-express-server/deploy.sh"
